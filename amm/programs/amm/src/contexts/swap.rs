@@ -101,5 +101,61 @@ impl<'info> Swap<'info> {
 
     }
 
-    fn transfer_to_vault(&mut self, args: SwapArgs, res: SwapResult)
+    fn transfer_to_vault(&mut self, args: SwapArgs, res: SwapResult) -> Result<()> {
+        let cpi_program = self.token_program.to_account_info();
+
+        let (cpi_accounts , mint_decimals) = match args.is_x {
+            true => ( TransferChecked {
+                from : self.user_ata_x.to_account_info(),
+                mint : self.mint_x.to_account_info(),
+                to : self.vault_x.to_account_info(),
+                authority : self.user.to_account_info(),
+            }, self.mint_x.decimals),
+            false => ( TransferChecked {
+                from : self.user_ata_x.to_account_info(),
+                mint : self.mint_x.to_account_info(),
+                to : self.vault_x.to_account_info(),
+                authority : self.user.to_account_info(),
+            }, self.mint_x.decimals),
+            };
+
+        let cpi_ctx = CpiContext::new(cpi_program, cpi_accounts);
+        transfer_checked(cpi_ctx, res.deposit, mint_decimals)?;
+        Ok(())
+    }
+
+    fn withdraw_from_vault(&mut self, args: SwapArgs, res: SwapResult) -> Result<()> {
+        let cpi_program = self.token_program.to_account_info();
+
+        let (cpi_accounts , mint_decimals) = match args.is_x {
+            true => ( TransferChecked {
+                from : self.vault_y.to_account_info(),
+                mint : self.mint_y.to_account_info(),
+                to : self.user_ata_y.to_account_info(),
+                authority : self.user.to_account_info(),
+            }, self.mint_y.decimals),
+            false => ( TransferChecked {
+                from : self.vault_x.to_account_info(),
+                mint : self.mint_x.to_account_info(),
+                to : self.user_ata_x.to_account_info(),
+                authority : self.user.to_account_info(),
+            }, self.mint_x.decimals),
+            };
+
+        let config_bump = self.config.seed.to_le_bytes();
+
+        let seeds = [
+            b"config",
+            self.mint_x.to_account_info().key.as_ref(),
+            self.mint_y.to_account_info().key.as_ref(),
+            config_bump.as_ref(),
+            &[self.config.config_bump],
+        ];
+
+        let signer_seeds = &[&seeds[..]];
+
+        let cpi_ctx = CpiContext::new_with_signer(cpi_program, cpi_accounts, signer_seeds);
+        transfer_checked(cpi_ctx, res.withdraw, mint_decimals)?;
+        Ok(())
+    }
 }
