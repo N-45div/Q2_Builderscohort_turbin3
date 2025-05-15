@@ -86,6 +86,9 @@ Current research systems are plagued by paywalls, data silos, and funding ineffi
 * **NFTs:** Metaplex standards (mocked for MVP).
 * **Oracles:** Switchboard for peer-review scores (planned).
 
+  ![image](https://github.com/user-attachments/assets/f78777ed-191d-44a1-914a-3bf264456a40)
+
+
 ### Solana Programs
 
 * `initialize_researcher`: Register a researcher.
