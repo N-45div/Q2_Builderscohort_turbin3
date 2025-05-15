@@ -123,6 +123,8 @@ Current research systems are plagued by paywalls, data silos, and funding ineffi
 * Research upload and NFT minting (mocked).
 * Escrow creation and purchase.
 
+![Screenshot 2025-05-14 235907](https://github.com/user-attachments/assets/d8b7d9b2-4855-419c-984a-2bd8b687c721)
+
 ---
 
 ## Future Roadmap
