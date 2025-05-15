@@ -1,13 +1,21 @@
-# SciVault: Decentralized Research Vault (PoC)
+# N DIVIJ's Code Base for Turbin3 Builders Cohort
+
+![image](https://github.com/user-attachments/assets/6dbdd7b7-5d2a-44f7-ac7f-24caebdc650e)
+
+SciVault: Decentralized Research Vault (PoC)
+
+### Prerequisites
+
+Prereqs for the builder's cohort:
+
+* [Rust Prerequisite](https://github.com/N-45div/turbin3_rustprereq)
+* [TypeScript Prerequisite](https://github.com/N-45div/turbin3_tsprereq)
 
 ## Overview
 
-**Project Name:** SciVault
-
-**Value Proposition:**
 SciVault is a decentralized platform built on Solana, leveraging high-speed blockchain, decentralized physical infrastructure (DePIN), and real-world asset (RWA) tokenization to securely store, share, and monetize scientific research data. It empowers researchers to collaborate, publish, and earn rewards in a trustless, low-cost environment.
 
-### Product-Market Fit:
+### Product-Market Fit
 
 Current research systems are plagued by paywalls, data silos, and funding inefficiencies. SciVault addresses these challenges by providing:
 
