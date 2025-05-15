@@ -1,12 +1,13 @@
 use anchor_lang::prelude::*;
 
-declare_id!("FX1c52jr2jqPsrMSr1mXaYzJYzgAJuMdkxqQKBbPu6km");
+declare_id!("4oA96QJGJKFRak87PVeNUtFpmUR4c2n41tqBU4sqvfwK");
 
 #[program]
-pub mod capstone_program {
+pub mod nft_staking {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+        msg!("Greetings from: {:?}", ctx.program_id);
         Ok(())
     }
 }

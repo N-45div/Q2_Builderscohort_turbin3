@@ -1,18 +1,19 @@
 [toolchain]
+package_manager = "yarn"
 
 [features]
-seeds = false
+resolution = true
 skip-lint = false
 
 [programs.localnet]
-capstone_program = "FX1c52jr2jqPsrMSr1mXaYzJYzgAJuMdkxqQKBbPu6km"
+scivault = "Gv81pBL9CrgUtTNwWFtJB4ww5iHDmZXuCsYFpQXDcX5J"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
-wallet = "/home/divij/.config/solana/id.json"
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

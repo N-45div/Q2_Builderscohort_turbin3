@@ -1,12 +1,12 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { CapstoneProgram } from "../target/types/capstone_program";
+import { NftStaking } from "../target/types/nft_staking";
 
-describe("capstone-program", () => {
+describe("nft-staking", () => {
   // Configure the client to use the local cluster.
   anchor.setProvider(anchor.AnchorProvider.env());
 
-  const program = anchor.workspace.CapstoneProgram as Program<CapstoneProgram>;
+  const program = anchor.workspace.nftStaking as Program<NftStaking>;
 
   it("Is initialized!", async () => {
     // Add your test here.
